@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cờ caro</title>
+</head>
+<style>
+    .square {
+        width: 50px;
+        height: 50px;
+    }
+</style>
+<body>
+
+<!--<div id="carogame">
+</div>
+<input type="button" value="Change Value" onclick="changeValue();">-->
+<script>
+    //vẽ bảng
+    let lengthBoard = parseInt(prompt("Input board game dimension"));
+    let tableCaro;
+    tableCaro = "<table border='1' cellspacing='1' cellpadding='3'>";
+    for (let i = 0; i < lengthBoard; i++) {
+        tableCaro = tableCaro + "<tr>";
+        for (let j = 0; j < lengthBoard; j++) {
+            tableCaro += `<td class="square" id='${[i]}${[j]}' onclick='clickCheck(this.id)'></td>`
+        }
+        tableCaro += "</tr>";
+    }
+    tableCaro = tableCaro +"</table>";
+    document.write(tableCaro);
+
+    function clickCheck(x) {
+        var i = 0;
+        if (i%2===0)
+        {document.getElementById(x).innerHTML = 'X';i++   }
+
+    }
+
+
+
+
+
+
+</script>
+</body>
+</html>

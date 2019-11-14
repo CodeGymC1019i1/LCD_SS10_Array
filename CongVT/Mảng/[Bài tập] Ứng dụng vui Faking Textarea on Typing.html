@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>[*Bài tập] Ứng dụng vui Faking Textarea on Typing
+    </title>
+</head>
+<body>
+<div>
+    <h3>Type something here!</h3><br>
+    <textarea name="" id="fakeTyping" cols="30px" rows="10" onkeydown="typingTest();"> </textarea>
+</div>
+<script>
+    var defaultStr = 'Cộng hòa xã hội chủ nghĩa Việt Nam';
+    //var array = defaultStr.split(" ");
+    var n = new Array();
+
+    function typingTest() {
+        let textInput = document.getElementById('fakeTyping').value;
+        let j = textInput.length;
+        n = defaultStr[0];
+        if (j>0){
+            for (let i = 1; i <= j; i++) {
+                n +=defaultStr[i];
+                if (defaultStr.length !== i) {
+                    continue;
+                }
+                document.getElementById('fakeTyping').value = "";
+                n = "";
+            }
+        }
+        document.getElementById('fakeTyping').value = n;
+        n= "";
+        setTimeout("typingTest()",0)
+
+    }
+</script>
+</body>
+</html>

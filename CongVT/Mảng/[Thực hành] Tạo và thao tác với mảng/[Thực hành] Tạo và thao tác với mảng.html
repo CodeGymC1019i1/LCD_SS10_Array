@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>[Thực hành] Tạo và thao tác với mảng
+    </title>
+</head>
+<body>
+<div style="height: 300px; length: 400px;">
+    <input type="text" value="" id="inputnumber">
+    <input type="button" id="addnumber" onclick="addNumber()" value="Add">
+    <input type="button" onclick="displayNumber()" value="Display">
+    <hr>
+</div>
+
+<!--display value from input-->
+<div id="displayResult" style="height: 300px; length: 400px;">
+
+</div>
+
+<script>
+    //Mảng
+    let i=0;
+    let arrNum = [];
+    function addNumber() {
+        let number = document.getElementById('inputnumber').value;
+        arrNum[i] = number;
+        i++;
+        document.getElementById("inputnumber").value = "";
+    }
+    //Hiển thị
+    function displayNumber() {
+        let e = " ";
+        for (i = 0; i < arrNum.length ; i++) {
+            e += "Element " + i + " = " +arrNum[i] + "<br>";
+        }
+        document.getElementById('displayResult').innerHTML = e;
+    }
+</script>
+</body>
+</html>
