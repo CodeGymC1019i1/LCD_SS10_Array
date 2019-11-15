@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Từ điển</title>
+</head>
+<body>
+    <input type="text"  id="word">
+    <input type="button" value="translate" onclick="dictionary()">
+    <br/>
+    <span id = "result"></span>
+    <script>
+        let eng = ['hi','bye','school','sun','moon'];
+        let vie = ['xin chào','tạm biệt','trường học','mặt trời','mặt trăng'];
+        let word = document.getElementById("word");
+        let result = "";
+        function dictionary() {
+            for (let i = 0; i < eng.length; i++) {
+                if(word.value == eng[i]) {
+                    result = vie[i];
+                    break;
+                }
+                result =  'không tìm thấy';
+
+            }
+
+            document.getElementById("result").innerHTML = result.toString();
+
+        }
+    </script>
+</body>
+</html>

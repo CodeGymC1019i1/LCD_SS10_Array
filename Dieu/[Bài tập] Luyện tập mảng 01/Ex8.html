@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ex8</title>
+    <script src="InputDisplayArray.js"></script>
+</head>
+<body>
+    <script>
+        function arrange(array) {
+            let change;
+            for (let i = 0; i < array.length-1; i++) {
+                for (let j = i; j < array.length; j++) {
+                    if(array[i]<array[j]){
+                        change = array[i];
+                        array[i] = array[j];
+                        array[j]= change;
+                    }
+                    
+                }
+
+            }
+            document.write("Mang sau khi sap xep giam dan la: "+array.toString());
+
+        }
+        function main() {
+            let number;
+            let array = [];
+            let v;
+            number = inputN(number);
+            inputArray(number, array);
+            displayArray(array);
+            document.write("<br>");
+            arrange(array);
+        }
+        main();
+    </script>
+</body>
+</html>

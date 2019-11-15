@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Game caro đơn giản</title>
+    <style>
+        h3 {
+            text-align: center;
+        }
+        table, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+            text-align: center;
+            margin: auto;
+            font-size: 30px;
+        }
+        td {
+            width: 50px;
+            height: 50px;
+        }
+    </style>
+</head>
+<body>
+    <h3>Caro</h3>
+    <p id = "caro"></p>
+    <script>
+        let turn = true;
+        let n = 9;
+        function drawBoard(N) {
+            let data = "<table>";
+                for (let i = 0; i < N; i++) {
+                data += "<tr>";
+                for (let j = 0; j < N; j++) {
+                    data += "<td onclick='tick(this.id,"+i+","+j+")' id="+i+j+"></td>";
+                }
+                data += "</tr>";
+            }
+            data +="</table>";
+            document.write(data);
+        }
+        function tick(id,i,j){
+            let tick = document.getElementById(id).innerHTML;
+            if (tick != ""){
+                alert("vi tri da co gia tri, xin chon vi tri khac")
+            } else {
+                if (turn) {
+                    tick = 'X';
+                    turn = false;
+                } else {
+                    tick = 'O';
+                    turn = true;
+                }
+            }
+            document.getElementById(id).innerHTML = tick;
+
+            checkWinner(i,j);
+        }
+        function checkWinner(i,j) {
+            let checkX = check("ngang", i, j);
+            let checkY = check("doc", i, j);
+            let checkXY = check("cheo1", i, j);
+            let checkYX = check("cheo2", i, j);
+        }
+        function check(dir, i, j){
+            let count = 1;
+            let value = document.getElementById(''+i+j).innerHTML;
+            let x = 1;
+            let y = 1;
+            switch (dir) {
+                case "ngang":
+                    while ((j+y)<n && document.getElementById(''+i+(j+y)).innerHTML==value){
+                        count++;
+                        y++;
+                    }
+                    while ((j-y)>=0 && document.getElementById(''+i+(j-y)).innerHTML==value){
+                        count++;
+                        y++;
+                    }
+                    break;
+                case "doc":
+                    while ((i+x)<n && document.getElementById(''+(i+x)+j).innerHTML==value){
+                        count++;
+                        x++;
+                    }
+                    while ((i-x)>=0 && document.getElementById(''+(i-x)+j).innerHTML==value){
+                        count++;
+                        x++;
+                    }
+                    break;
+
+                case "cheo1":
+                    while ((i+x)<n && (j+x)<n && document.getElementById(''+(i+x)+(j+x)).innerHTML==value){
+                        count++;
+                        x++;
+                    }
+                    while ((i-y)>=0 && (j-y)>=0 && document.getElementById(''+(i-y)+(j-y)).innerHTML==value){
+                        count++;
+                        y++;
+                    }
+                    break;
+
+                case "cheo2":
+                    while ((i-x)>=0 && (j+x)<n && document.getElementById(''+(i-x)+(j+x)).innerHTML==value){
+                        count++;
+                        x++;
+                    }
+                    while ((i+y)<n&& (j-y)>=0 && document.getElementById(''+(i+y)+(j-y)).innerHTML==value){
+                        count++;
+                        y++;
+                    }
+                    break;
+            }
+            console.log(count);
+            if (count >=5){
+                alert("you won");
+            }
+        }
+
+        function main(){
+            drawBoard(n);
+        }
+        main();
+
+    </script>
+</body>
+</html>

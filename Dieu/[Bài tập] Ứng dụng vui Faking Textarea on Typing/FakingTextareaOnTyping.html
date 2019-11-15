@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>[Bài tập] Ứng dụng vui Faking Textarea on Typing</title>
+    <style>
+
+        fieldset {
+            margin: auto;
+            width: 55px;
+
+        }
+    </style>
+</head>
+<body>
+        <fieldset >
+            <legend>Type anything slowly</legend>
+            <textarea oninput="fakingText(id)" id = "fake" cols = "50" rows = "5" ></textarea>
+        </fieldset>
+
+        <script>
+            let count = 0;
+            str = '';
+            function fakingText(id) {
+                let fakeWord = ['s','a','o',' ','t','ô','i',' ','l','ạ','i',' ','g','õ',' ','m','ấ','y',' ','c','h','ữ',' ','n','à','y','?'];
+                for (let i = 0; i < fakeWord.length; i++) {
+                    if ( i === count) {
+                        str += fakeWord[count];
+                            count++;
+                        break;
+                    }
+                    if (count === fakeWord.length){
+                        str = "";
+                        count = 0;
+                    }
+                }
+            document.getElementById(id).value = str;
+            }
+        </script>
+
+</body>
+</html>
+
